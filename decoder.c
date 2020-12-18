@@ -1,29 +1,41 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "stringutils.h"
 #include "coders.h"
 
+char*   argvReader(int argc,char* argv[]) {
+    int len = 0;
 
-int main() {
-    char cipher[6];
-    printf("Enter cipher (Caesar or XOR): "); 
-    scanf("%s", cipher);
-    char text[200];
-    printf("Enter text: ");
-    scanf("%s", text);
-
-    if (strcmp(cipher, "Caesar") == 0) {
-	    int offset;
-	    printf("Enter key: ");
-        scanf("%d", &offset);
-        printf("%s\n", muttableCaesarDecoder(text, offset));
+    for (int i = 2; i < argc - 1; ++i) {
+        len += strlen(argv[i]) + 1;
     }
-    else if (strcmp(cipher, "XOR") == 0) {
-	    char password[200];
-	    printf("Enter password: ");
-        scanf("%s", password);
-        printf("%s\n", muttableXorCoder(text, password));
+    char* str = malloc((len + 1) * (sizeof(char)));
+    
+    for (int i = 2; i < argc - 1; ++i) {
+    strcat(str, argv[i]);
+    strcat(str, " ");
+    }
+    return str;
+}
+
+
+int main(int argc, char* argv[]) {
+    char* command = argv[0];
+    char* method = argv[1];
+    char* str = argvReader(argc, argv);
+    char* key = argv[argc - 1];
+
+    if (strcmp(method, "Caesar") == 0) {
+        muttableEndStrip(str);
+        mutableToLower(str);
+        muttableCaesarDecoder(str, key);
+	    printf("%s\n", str);
+    }
+    if (strcmp(method, "XOR") == 0) {
+        muttableEndStrip(str);
+        mutableToLower(str);
+        muttableXorCoder(str, key);
+        printf("%s\n", str);
     }
         
     else {
