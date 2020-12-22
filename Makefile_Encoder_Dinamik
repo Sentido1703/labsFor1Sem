@@ -1,7 +1,7 @@
 SOURCES=encoder.c
 FORLIBRARY=stringutils.o coders.o
 LIBRARY=libCod.so
-TARGET=decoded
+TARGET=encoder
 
 all: $(TARGET)
 
