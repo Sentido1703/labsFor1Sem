@@ -25,13 +25,13 @@ int main(int argc, char* argv[]) {
     char* str = argvReader(argc, argv);
     char* key = argv[argc - 1];
 
-    if (strcmp(method, "Caesar") == 0) {
+    if (strcmp(method, "--caesar") == 0) {
         muttableEndStrip(str);
         mutableToLower(str);
         muttableCaesarEncoder(str,atoi(key));
 	    printf("%s\n", str);
     }
-    if (strcmp(method, "XOR") == 0) {
+    if (strcmp(method, "--xor") == 0) {
         muttableEndStrip(str);
         mutableToLower(str);
         muttableXorCoder(str, key);

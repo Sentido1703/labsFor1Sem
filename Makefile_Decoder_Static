@@ -12,12 +12,12 @@ decoder.o: decoder.c
 	gcc $< -c -o $@ -std=c99
 
 $(LIBRARY): $(FORLIBRARY)
-	ar cr $(LIBRARY) stringutils.o coder.o
+	ar cr $(LIBRARY) stringutils.o coders.o
 
 stringutils.o: stringutils.c
 	gcc $< -c -o $@ -std=c99
 
-Coder.o: coders.c
+coders.o: coders.c
 	gcc $< -c -o $@ -std=c99
 
 clean:
