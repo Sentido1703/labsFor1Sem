@@ -1,6 +1,6 @@
 SOURCES=decoder.c
 FORLIBRARY=stringutils.o coders.o
-LIBRARY=libs.a
+LIBRARY=libString.a
 TARGET=decoded
 
 all: $(TARGET)

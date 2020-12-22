@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
     if (strcmp(method, "Caesar") == 0) {
         muttableEndStrip(str);
         mutableToLower(str);
-        muttableCaesarDecoder(str, key);
+        muttableCaesarDecoder(str, atoi(key));
 	    printf("%s\n", str);
     }
     if (strcmp(method, "XOR") == 0) {
